@@ -1,0 +1,32 @@
+{
+  "name": "evalio",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -b && pnpm --filter @evalio/web typecheck",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check-loc": "node scripts/check-loc.mjs",
+    "dev": "pnpm --parallel --filter @evalio/api --filter @evalio/web dev",
+    "dev:api": "pnpm --filter @evalio/api dev",
+    "dev:web": "pnpm --filter @evalio/web dev",
+    "build": "pnpm -r run build",
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test && pnpm check-loc"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@types/node": "^22.10.5",
+    "eslint": "^9.18.0",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.2",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.20.0",
+    "vitest": "^3.0.2"
+  }
+}

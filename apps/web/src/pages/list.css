@@ -1,0 +1,63 @@
+.chips {
+  display: flex;
+  gap: var(--space);
+  margin: 0 0 16px;
+}
+
+.chip {
+  border: 1px solid var(--n30);
+  background: var(--n0);
+  border-radius: 16px;
+  padding: 4px 12px;
+  cursor: pointer;
+  color: var(--n800);
+
+  &:hover {
+    background: var(--n20);
+  }
+
+  &.on {
+    background: var(--b50);
+    border-color: var(--b400);
+    color: var(--b400);
+    font-weight: 600;
+  }
+}
+
+.card {
+  background: var(--n0);
+  border: 1px solid var(--n30);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--n20);
+  color: inherit;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  &:hover {
+    background: var(--n10);
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.row-key {
+  font-weight: 600;
+  color: var(--b400);
+  margin-right: 8px;
+}
+
+.row-title {
+  color: var(--n800);
+}

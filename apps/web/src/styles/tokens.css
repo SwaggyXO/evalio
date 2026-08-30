@@ -1,0 +1,32 @@
+:root {
+  --n0: #ffffff;
+  --n10: #f7f8f9;
+  --n20: #f1f2f4;
+  --n30: #dcdfe4;
+  --n40: #b3b9c4;
+  --n100: #8590a2;
+  --n200: #626f86;
+  --n800: #172b4d;
+  --n1000: #091e42;
+  --b50: #e9f2ff;
+  --b100: #cce0ff;
+  --b400: #0c66e4;
+  --b500: #0055cc;
+  --g50: #dcfff1;
+  --g400: #22a06b;
+  --g500: #1f845a;
+  --y50: #fff7d6;
+  --y400: #e2b203;
+  --y700: #7f5f01;
+  --r50: #ffeceb;
+  --r400: #c9372c;
+  --shadow: 0 1px 1px rgba(9, 30, 66, 0.13), 0 0 1px rgba(9, 30, 66, 0.13);
+  --radius: 3px;
+  --radius-search: 8px;
+  --nav: 240px;
+  --top: 56px;
+  --space: 8px;
+  --font:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans',
+    sans-serif;
+}

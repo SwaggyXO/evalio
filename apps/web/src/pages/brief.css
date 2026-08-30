@@ -1,0 +1,111 @@
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  border-left-width: 3px;
+}
+
+.banner-ready {
+  background: var(--g50);
+  border-color: var(--g400);
+}
+
+.banner-human {
+  background: var(--y50);
+  border-color: var(--y400);
+}
+
+.banner-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.banner-ready .banner-title {
+  color: var(--g500);
+}
+
+.banner-human .banner-title {
+  color: var(--y700);
+}
+
+.reasons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.claim {
+  padding: 16px;
+  border-bottom: 1px solid var(--n20);
+  border-left: 3px solid var(--n30);
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.claim-ready {
+  border-left-color: var(--g400);
+}
+
+.claim-human,
+.claim-conflict {
+  border-left-color: var(--y400);
+}
+
+.claim-wrong,
+.claim-stale {
+  border-left-color: var(--r400);
+}
+
+.claim-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.trail-toggle {
+  border: 1px solid var(--n30);
+  background: var(--n0);
+  border-radius: var(--radius);
+  padding: 4px 10px;
+  cursor: pointer;
+  color: var(--n800);
+
+  &:hover {
+    background: var(--n20);
+  }
+}
+
+.trail {
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--n200);
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.trail li {
+  position: relative;
+  padding: 0 0 8px 16px;
+  border-left: 2px solid var(--n30);
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.coverage {
+  margin: 0;
+  padding-left: 20px;
+}

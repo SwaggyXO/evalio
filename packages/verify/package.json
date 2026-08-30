@@ -1,0 +1,16 @@
+{
+  "name": "@evalio/verify",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "typecheck": "tsc -b --pretty false"
+  },
+  "dependencies": {
+    "@evalio/domain": "workspace:*",
+    "@evalio/search": "workspace:*"
+  }
+}

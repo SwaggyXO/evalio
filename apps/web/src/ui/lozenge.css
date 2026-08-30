@@ -1,0 +1,43 @@
+.lozenge {
+  display: inline-block;
+  border-radius: var(--radius);
+  padding: 0 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 16px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+.lozenge-ready {
+  background: var(--g50);
+  color: var(--g500);
+}
+
+.lozenge-human,
+.lozenge-conflict {
+  background: var(--y50);
+  color: var(--y700);
+}
+
+.lozenge-wrong,
+.lozenge-stale {
+  background: var(--r50);
+  color: var(--r400);
+}
+
+.lozenge-todo {
+  background: var(--n20);
+  color: var(--n200);
+}
+
+.lozenge-progress {
+  background: var(--b50);
+  color: var(--b400);
+}
+
+.lozenge-done {
+  background: var(--g50);
+  color: var(--g500);
+}
