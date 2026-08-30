@@ -59,4 +59,23 @@ describe('api', () => {
     expect(res.status).toBe(200);
     expect(res.body.hits[0].pageId).toBe('page-limits');
   });
+
+  it('serves a landing with github and linkedin', async () => {
+    const json = await request(app).get('/').set('Accept', 'application/json');
+    expect(json.status).toBe(200);
+    expect(json.body.github).toBe('https://github.com/SwaggyXO/evalio');
+    expect(json.body.linkedin).toBe(
+      'https://linkedin.com/in/devashish-soni-o7',
+    );
+
+    const html = await request(app).get('/').set('Accept', 'text/html');
+    expect(html.status).toBe(200);
+    expect(html.text).toContain('https://github.com/SwaggyXO/evalio');
+    expect(html.text).toContain('https://linkedin.com/in/devashish-soni-o7');
+  });
+
+  it('rejects writes', async () => {
+    const res = await request(app).post('/work-items');
+    expect(res.status).toBe(405);
+  });
 });

@@ -1,7 +1,8 @@
 import type { Brief, Page, SearchHit, Space, WorkItem } from '@evalio/domain';
 import { localApi } from './local-api';
 
-const BASE = '/api';
+const remoteBase = (import.meta.env.VITE_API_URL ?? '').replace(/\/$/, '');
+const BASE = remoteBase || '/api';
 
 async function getJson<T>(path: string): Promise<T> {
   const res = await fetch(`${BASE}${path}`);
@@ -28,4 +29,4 @@ const remoteApi = {
     ),
 };
 
-export const api = import.meta.env.PROD ? localApi : remoteApi;
+export const api = import.meta.env.PROD && !remoteBase ? localApi : remoteApi;

@@ -13,7 +13,7 @@ export function HealthChip() {
         .catch(() => alive && setOk(false));
     };
     tick();
-    const id = window.setInterval(tick, 8000);
+    const id = window.setInterval(tick, 60_000);
     return () => {
       alive = false;
       window.clearInterval(id);

@@ -4,6 +4,7 @@ RUN corepack enable
 COPY . .
 RUN pnpm install --filter @evalio/api...
 WORKDIR /app/apps/api
-ENV PORT=3001
-EXPOSE 3001
+ENV HOST=0.0.0.0
+ENV PORT=8080
+EXPOSE 8080
 CMD ["pnpm", "exec", "tsx", "src/index.ts"]

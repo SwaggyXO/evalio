@@ -15,7 +15,9 @@
     "dev:api": "pnpm --filter @evalio/api dev",
     "dev:web": "pnpm --filter @evalio/web dev",
     "build": "pnpm -r run build",
-    "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test && pnpm check-loc"
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test && pnpm check-loc",
+    "cloud:up": "node scripts/cloud-up.mjs",
+    "cloud:down": "node scripts/cloud-down.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",

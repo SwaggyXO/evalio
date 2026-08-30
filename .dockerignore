@@ -5,3 +5,4 @@ e2e
 playwright-report
 test-results
 *.log
+.evalio-cloud.json

@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { notFound, type Clock, type ContentRepo } from '@evalio/domain';
 import { buildIndex, searchPages } from '@evalio/search';
+import { sendLanding } from './landing.js';
 import { MemoryMetrics } from './metrics.js';
 import { requireQuery, sendError } from './http.js';
 
@@ -48,6 +49,7 @@ export function catalogRouter(repo: ContentRepo): Router {
 
 export function opsRouter(metrics: MemoryMetrics, clock: Clock): Router {
   const router = Router();
+  router.get('/', sendLanding);
   router.get('/health', (_req, res) => {
     res.json({
       ok: true,
