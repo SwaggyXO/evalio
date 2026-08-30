@@ -22,6 +22,7 @@ export function run(command, args, { capture = false } = {}) {
     cwd: ROOT,
     encoding: 'utf8',
     windowsHide: true,
+    shell: process.platform === 'win32',
     stdio: capture ? ['ignore', 'pipe', 'pipe'] : 'inherit',
   });
   if (result.status !== 0) {
@@ -47,6 +48,8 @@ export function projectId() {
   const fromEnv =
     process.env.CLOUDSDK_CORE_PROJECT || process.env.GOOGLE_CLOUD_PROJECT;
   if (fromEnv) return fromEnv;
+  const fromState = loadState()?.project;
+  if (fromState) return fromState;
   const value = gcloud(['config', 'get-value', 'project'], { capture: true });
   if (!value || value === '(unset)') {
     throw new Error(
