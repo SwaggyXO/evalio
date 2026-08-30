@@ -6,5 +6,5 @@ const host =
 const app = createApp();
 
 app.listen(port, host, () => {
-  console.log(`evalio-api listening on http://${host}:${port}`);
+  console.log(`evalio listening on http://${host}:${port}`);
 });

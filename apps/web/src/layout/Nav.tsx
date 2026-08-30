@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { docsHref, GITHUB, LINKEDIN } from './links';
 import './shell.css';
 
 export function Nav() {
@@ -16,6 +17,17 @@ export function Nav() {
       </NavLink>
       <NavLink to="/pages">Pages</NavLink>
       <NavLink to="/search">Search</NavLink>
+      <div className="nav-ext">
+        <a href={docsHref()} target="_blank" rel="noreferrer">
+          API docs
+        </a>
+        <a href={GITHUB} target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+        <a href={LINKEDIN} target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+      </div>
     </nav>
   );
 }

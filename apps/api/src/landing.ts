@@ -10,7 +10,8 @@ export function landingPayload() {
     github: GITHUB,
     linkedin: LINKEDIN,
     demo: DEMO,
-    health: '/health',
+    docs: '/docs',
+    health: '/api/health',
   };
 }
 

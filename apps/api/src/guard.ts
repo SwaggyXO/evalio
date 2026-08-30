@@ -1,5 +1,10 @@
 import cors from 'cors';
-import express, { type Express, type Request, type Response } from 'express';
+import express, {
+  type Express,
+  type Request,
+  type RequestHandler,
+  type Response,
+} from 'express';
 import rateLimit from 'express-rate-limit';
 
 const DEFAULT_ORIGINS = [
@@ -28,10 +33,10 @@ export function applyGuard(app: Express): void {
   );
   app.use(express.json({ limit: '8kb' }));
   app.use(getOnly);
-  if (process.env.NODE_ENV !== 'test') {
-    app.use(minuteLimiter);
-    app.use(hourLimiter);
-  }
+}
+
+export function apiLimiter(): RequestHandler[] {
+  return [minuteLimiter, hourLimiter];
 }
 
 function getOnly(req: Request, res: Response, next: () => void): void {
@@ -65,7 +70,7 @@ const hourLimiter = rateLimit({
 });
 
 function skipCheap(req: Request): boolean {
-  return req.path === '/' || req.path === '/health' || req.method === 'OPTIONS';
+  return req.path === '/health' || req.path === '/' || req.method === 'OPTIONS';
 }
 
 function tooMany(_req: Request, res: Response): void {

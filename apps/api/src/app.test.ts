@@ -61,17 +61,27 @@ describe('api', () => {
   });
 
   it('serves a landing with github and linkedin', async () => {
-    const json = await request(app).get('/').set('Accept', 'application/json');
+    const json = await request(app)
+      .get('/api')
+      .set('Accept', 'application/json');
     expect(json.status).toBe(200);
     expect(json.body.github).toBe('https://github.com/SwaggyXO/evalio');
     expect(json.body.linkedin).toBe(
       'https://linkedin.com/in/devashish-soni-o7',
     );
+    expect(json.body.docs).toBe('/docs');
+  });
 
-    const html = await request(app).get('/').set('Accept', 'text/html');
-    expect(html.status).toBe(200);
-    expect(html.text).toContain('https://github.com/SwaggyXO/evalio');
-    expect(html.text).toContain('https://linkedin.com/in/devashish-soni-o7');
+  it('serves swagger ui', async () => {
+    const res = await request(app).get('/docs/');
+    expect(res.status).toBe(200);
+    expect(res.text.toLowerCase()).toContain('swagger');
+  });
+
+  it('lists work items under /api', async () => {
+    const res = await request(app).get('/api/work-items');
+    expect(res.status).toBe(200);
+    expect(res.body[0].key).toBe('ENG-101');
   });
 
   it('rejects writes', async () => {

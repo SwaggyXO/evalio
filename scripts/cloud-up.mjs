@@ -11,7 +11,7 @@ import {
 const project = projectId();
 
 console.log(`Deploying ${SERVICE} to ${project} / ${REGION}`);
-console.log('Caps: max-instances=1, min=0, 512Mi, 15s timeout, 10 concurrent.');
+console.log('Caps: max-instances=1, min=0, 1Gi, 15s timeout, 10 concurrent.');
 
 gcloud([
   'services',
@@ -33,7 +33,7 @@ gcloud([
   '--max-instances=1',
   '--min-instances=0',
   '--cpu=1',
-  '--memory=512Mi',
+  '--memory=1Gi',
   '--timeout=15',
   '--concurrency=10',
   '--cpu-throttling',
@@ -59,8 +59,9 @@ writeFileSync(
   `${JSON.stringify({ project, region: REGION, service: SERVICE, url }, null, 2)}\n`,
 );
 
-console.log(`\nAPI: ${url}`);
-console.log(`Health: ${url}/health`);
+console.log(`\nApp: ${url}`);
+console.log(`Docs: ${url}/docs`);
+console.log(`API: ${url}/api/health`);
 console.log('GitHub Pages stays in-browser unless you wire VITE_API_URL.');
 console.log('Killswitch: pnpm cloud:down');
 

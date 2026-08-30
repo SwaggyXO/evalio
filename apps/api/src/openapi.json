@@ -1,0 +1,122 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Evalio",
+    "version": "0.0.1",
+    "description": "Readiness check for agent briefs. GET only. Seeded catalog, nothing is stored.",
+    "contact": {
+      "name": "Devashish Soni",
+      "url": "https://linkedin.com/in/devashish-soni-o7"
+    }
+  },
+  "externalDocs": {
+    "description": "GitHub",
+    "url": "https://github.com/SwaggyXO/evalio"
+  },
+  "servers": [{ "url": "/api", "description": "This service" }],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Service links",
+        "responses": {
+          "200": { "description": "GitHub, LinkedIn, docs, health" }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "responses": { "200": { "description": "ok" } }
+      }
+    },
+    "/metrics": {
+      "get": {
+        "summary": "In-memory counters",
+        "responses": { "200": { "description": "counters and p95" } }
+      }
+    },
+    "/space": {
+      "get": {
+        "summary": "Current space",
+        "responses": { "200": { "description": "Space" } }
+      }
+    },
+    "/work-items": {
+      "get": {
+        "summary": "List work items",
+        "responses": { "200": { "description": "WorkItem[]" } }
+      }
+    },
+    "/work-items/{key}": {
+      "get": {
+        "summary": "Get a work item",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "example": "ENG-101" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "WorkItem" },
+          "404": { "description": "Missing" }
+        }
+      }
+    },
+    "/work-items/{key}/brief": {
+      "get": {
+        "summary": "Compute a brief",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "example": "ENG-101" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Brief with claims, trail, readiness" },
+          "404": { "description": "Missing" }
+        }
+      }
+    },
+    "/pages": {
+      "get": {
+        "summary": "List pages",
+        "responses": { "200": { "description": "Page[]" } }
+      }
+    },
+    "/pages/{id}": {
+      "get": {
+        "summary": "Get a page",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string", "example": "page-limits" }
+          }
+        ],
+        "responses": {
+          "200": { "description": "Page" },
+          "404": { "description": "Missing" }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "summary": "Search pages",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "example": "rate limits" }
+          }
+        ],
+        "responses": { "200": { "description": "hits" } }
+      }
+    }
+  }
+}

@@ -8,6 +8,9 @@
   background: var(--n0);
   border-right: 1px solid var(--n30);
   padding: 16px 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .brand {
@@ -58,6 +61,11 @@
     font-weight: 600;
     text-decoration: none;
   }
+}
+
+.nav-ext {
+  margin-top: auto;
+  padding-top: 24px;
 }
 
 .main {

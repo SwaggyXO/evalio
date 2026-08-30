@@ -8,9 +8,9 @@ The brief is computed on each request. Nothing is stored.
 
 ## Try it
 
-Live UI: [swaggyxo.github.io/evalio](https://swaggyxo.github.io/evalio/) (runs in the browser)
+Live app: [evalio-api-edienbcrga-el.a.run.app](https://evalio-api-edienbcrga-el.a.run.app/) — UI + API. [Swagger](https://evalio-api-edienbcrga-el.a.run.app/docs). `pnpm cloud:down` removes it.
 
-Live API: [evalio-api-edienbcrga-el.a.run.app](https://evalio-api-edienbcrga-el.a.run.app/) — `pnpm cloud:down` removes it.
+Companion UI (in-browser, stays up if Cloud Run is taken down): [swaggyxo.github.io/evalio](https://swaggyxo.github.io/evalio/)
 
 Or locally:
 
@@ -82,11 +82,11 @@ pnpm --filter @evalio/e2e exec playwright test
 
 ## Cloud Run
 
-The live API is one service in `asia-south1`, same region as the rest of this GCP project:
+The live app is one Cloud Run service in `asia-south1` (UI, API, and Swagger):
 
 - max 1 instance, scale to zero
-- 512Mi, 15s timeout, 10 in-flight requests
-- GET only, 8kb body cap, 40 req/min and 200 req/hour per IP
+- 1Gi, 15s timeout, 10 in-flight requests
+- GET only, 8kb body cap, 40 req/min and 200 req/hour per IP on `/api`
 - CORS locked to GitHub Pages and local Vite
 
 ```bash
@@ -94,7 +94,7 @@ pnpm cloud:up
 pnpm cloud:down
 ```
 
-Opening the API URL in a browser shows GitHub and LinkedIn. `cloud:down` deletes this service only. Optional: `EVALIO_WIRE_PAGES=1 pnpm cloud:up` points Pages at Cloud Run; skip that unless you want the UI to depend on it.
+UI is `/`, API is `/api`, docs are `/docs`. `cloud:down` deletes this service only. GitHub Pages stays in-browser so it survives the killswitch.
 
 `.evalio-cloud.json` is local state, gitignored.
 
